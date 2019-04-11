@@ -50,9 +50,9 @@ def get_asesor_carrera(carrera):
 '''
 Metodo para insertar un nuevo registro 
 '''
-def insert_asesor(id_as,correo,habilidades,grado):
+def insert_asesor(nombre,correo,carrera,horario,habilidades,grado):
     try:
-        return db.insert('asesor',id_as=id_as,correo=correo,habilidades=habilidades,grado=grado) # inserta un registro en clientes
+        return db.insert('asesor',nombre=nombre,correo=correo,carrera=carrera,horario=horario,habilidades=habilidades,grado=grado) # inserta un registro en clientes
     except Exception as e:
         print "Model insert_asesor Error ()",format(e.args)
         print "Model insert_asesor Message {}",format(e.message)
@@ -72,11 +72,27 @@ def delete_asesor(id_as):
 '''
 Metodo para actualizar el nombre,telefono,correo y direccion recibidos
 '''
-def update_asesor(id_as,correo,habilidades): # actualiza el registro
+def update_asesor(id_as,correo,habilidades,grado): # actualiza el registro
     try:
             return db.update('asesor',
             correo=correo,
             habilidades=habilidades,
+            grado=grado,
+            where='id_as=$id_as',
+            vars=locals())
+    except Exception as e:
+        print "Model update_asesor Error ()",format(e.args)
+        print "Model update_asesor Message {}",format(e.message)
+        return None
+
+
+'''
+Metodo para actualizar el estado de validación
+'''
+def update_validacion(id_as,validado): # actualiza el registro
+    try:
+            return db.update('asesor',
+            validado=validado,
             where='id_as=$id_as',
             vars=locals())
     except Exception as e:

@@ -1,0 +1,1 @@
+'/api_asesorias/?', 'application.api.asesorias.api_asesorias.Api_asesorias',

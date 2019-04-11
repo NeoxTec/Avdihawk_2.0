@@ -14,5 +14,6 @@ urls = (
     '/perfil_asesor/(.*)','application.controllers.asesor.perfil.Perfil',
     '/editar_asesor/(.*)','application.controllers.asesor.editar.Editar',
     '/perfil/(.*)','application.controllers.asesor.perfil_e.Perfil',
-    '/editar_asesoria/(.*)', 'application.controllers.asesoria.edit.Editar'
+    '/editar_asesoria/(.*)', 'application.controllers.asesoria.edit.Editar',
+    '/api_asesor/?', 'application.api.asesor.api_asesor.Api_asesor',
    )
