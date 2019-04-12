@@ -1,5 +1,6 @@
 $def with(datos,params)
 $var tipo = params['tipo']
+
 <br>
 <h1 class="text-center"><img src="/static/images/multiple-users-silhouette.png" height="50" width="50" margin-left="20px">  Asesores</h1>
 <br>
@@ -18,12 +19,12 @@ $var tipo = params['tipo']
         <tbody>
             $for row in datos:
                 <tr>
-                    <td><a href="/perfil_asesor/$row.id_as">$row.id_as</a></td>
-                    <td><a href="/perfil_asesor/$row.id_as">$row.nombre</a></td>
-                    <td><a href="/perfil_asesor/$row.id_as">$row.correo</a></td>
-                    <td><a href="/perfil_asesor/$row.id_as">$row.carrera</a></td>
-                    <td><a href="/perfil_asesor/$row.id_as">$row.habilidades</a></td>
-                    <td><a href="/perfil_asesor/$row.id_as">$row.grado</a></td>
+                    <td>$row.id_as</a></td>
+                    <td><a href="/perfil_asesor/$row.correo">$row.nombre</a></td>
+                    <td>$row.correo</a></td>
+                    <td>$row.carrera</a></td>
+                    <td>$row.habilidades</a></td>
+                    <td>$row.grado</a></td>
                 </tr>
         </tbody>
     </table>

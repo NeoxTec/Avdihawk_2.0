@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import web
 import app 
 
@@ -30,7 +31,7 @@ Metodo para seleccionar un registro que coincida con el correo dado
 '''
 def get_asesor(correo):
     try:
-        return db.select('asesor', where= 'correo = $correo', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
+        return db.select('asesor', where= 'correo = $correo') #selecciona el primer registro que coincida con el nombre
     except Exception as e:
         print "Model select_id_as Error ()",format(e.args)
         print "Model select_id_as Message {}",format(e.message)

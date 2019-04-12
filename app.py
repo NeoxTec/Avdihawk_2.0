@@ -74,7 +74,7 @@ if web.config.get('_session') is None:
         'expire': '0000-00-00 00:00:00',
         'loggedin': False,
         'count': 0,
-        'id_as': 0
+        'asesor': 'anonymous'
         }
         )
     web.config._session = session

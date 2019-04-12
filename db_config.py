@@ -23,10 +23,10 @@ db_localhost = web.database(
 Configurar los parametros para una base de datos remota
 '''
 # Base de datos en la nube
-db_host_cloud = 'remote_server'
-db_name_cloud = 'remote_db_name'
-db_user_cloud = 'remote_user'
-db_pw_cloud = 'remote_password'
+db_host_cloud = 'ixqxr3ajmyapuwmi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'
+db_name_cloud = 'k24cfhzcxa0nskqc'
+db_user_cloud = 'm4s7d7dnba53vmgz'
+db_pw_cloud = 'oa32oqmrxhiwzjls'
 db_port_cloud = 3306
 
 db_cloud = web.database(

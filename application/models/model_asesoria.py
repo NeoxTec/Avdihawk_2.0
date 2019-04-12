@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import web
 import app 
 
@@ -30,10 +31,10 @@ Metodo para seleccionar un registro que coincida con el asesor de asesoria dado
 '''
 def get_solicitado(asesor):
     try:
-        return db.select('asesorias', where= 'asesor = $asesor', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
+        return db.select('asesorias', where='asesor=$asesor') #selecciona el primer registro que coincida con el nombre
     except Exception as e:
-        print "Model select_num_as Error ()",format(e.args)
-        print "Model select_num_as Message {}",format(e.message)
+        print "Model get_solicitado Error ()",format(e.args)
+        print "Model get_solicitado Message {}",format(e.message)
         return None
 
 '''
@@ -41,10 +42,10 @@ Metodo para seleccionar un registro que coincida con el asesor de asesoria dado
 '''
 def get_solicitante(solicitante):
     try:
-        return db.select('asesorias', where= 'solicitante = $solicitante', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
+        return db.select('asesorias', where= 'solicitante = $solicitante') #selecciona el primer registro que coincida con el nombre
     except Exception as e:
-        print "Model select_num_as Error ()",format(e.args)
-        print "Model select_num_as Message {}",format(e.message)
+        print "Model get_solicitante Error ()",format(e.args)
+        print "Model get_solicitante Message {}",format(e.message)
         return None
 
 '''
