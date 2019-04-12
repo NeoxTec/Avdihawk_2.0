@@ -187,7 +187,7 @@ class handler:
       return 'https://' + web.ctx.host + '/auth/%s/callback' % provider
     """
     print "callback_uri(self, provider): 108"
-    return 'https://' + web.ctx.host + '/auth/%s/callback' % provider
+    return 'https://' + web.ctx.host + '/auth/google/callback' % provider
     # raise NotImplementedError
 
   def _get_facebook_user_data(self, access_token):
