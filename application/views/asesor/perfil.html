@@ -1,11 +1,11 @@
-$def with(asesor,registro,params)
+$def with(asesor,params)
 <br>
 <a href="/"><button type="submit" class="btn btn-secondary btn-lg"><img src="/static/images/back.png" height="40" width="40">Regresar</button></a> <a href="/editar_asesor/$params['user']"><button type="submit" class="btn btn-secondary btn-lg" style="margin-left: 825px;"><img src="/static/images/document.png" height="40" width="40">Editar</button></a>
 <br>
 <br>
 <div class="jumbotron jumbotron-fluid">
         <div class="container" height="30" width="30">
-          <h1 class="display-7">$registro.nombre</h1>
+          <h1 class="display-7">$asesor.nombre</h1>
           <p class="lead">Alumno de la Universidad Tecnológica de Tulancingo .</p>
         </div>
         <section class="text-center">
@@ -25,5 +25,5 @@ $def with(asesor,registro,params)
     <br>
     <h3 class="text-left"><img src="/static/images/education.png" height="50" width="50">  Habilidades:</h3><input type="text" class="form-control" readonly="true" value="$asesor.habilidades" id="habilidades" name="habilidades">
     <br>
-    <h3 class="text-left"><img src="/static/images/degree.png" height="50" width="50">  Grado:</h3><input type="text" class="form-control"  readonly="true" value="$registro.grado" id="grado" name="grado">
+    <h3 class="text-left"><img src="/static/images/degree.png" height="50" width="50">  Grado:</h3><input type="text" class="form-control"  readonly="true" value="$asesor.grado" id="grado" name="grado">
 </section>

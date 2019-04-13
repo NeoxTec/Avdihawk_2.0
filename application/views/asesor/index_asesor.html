@@ -8,7 +8,7 @@ $var tipo = params['tipo']
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="table-success">
-                <th scope="col"><img src="/static/images/id-card.png" width="15" height="15">  ID</th>
+                <th scope="col"><img src="/static/images/hastag.png" height="15" width="15">  #</th>
                 <th scope="col"><img src="/static/images/opened-email-envelope.png" height="15" width="15">  Nombre</th>
                 <th scope="col"><img src="/static/images/user-silhouette.png" height="15" width="15">  Carrera</th>
                 <th scope="col"><img src="/static/images/user-silhouette.png" height="15" width="15">  Correo</th>
@@ -20,7 +20,7 @@ $var tipo = params['tipo']
             $for row in datos:
                 <tr>
                     <td>$row.id_as</a></td>
-                    <td><a href="/perfil_asesor/$row.correo">$row.nombre</a></td>
+                    <td><a href="/perfil_asesor/$row.id_as">$row.nombre</a></td>
                     <td>$row.correo</a></td>
                     <td>$row.carrera</a></td>
                     <td>$row.habilidades</a></td>

@@ -17,6 +17,5 @@ class Perfil():
         params['user'] = session_user
         params['tipo'] = session_privilege
         params['picture'] = session_picture
-        registro = config.model_users.get_users(session_user)
         asesor = config.model_asesor.get_asesor(params['user'])
-        return config.render.perfil(asesor,registro,params)
+        return config.render.perfil(asesor,params)
