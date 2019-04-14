@@ -47,7 +47,9 @@ $var tipo = params['tipo']
                         <td>$row.asesor</a></td>
                         <td>$row.tema</a></td>
                         $if row.estado == 'finalizado':
-                            <td width="30" height="30"><a href="/editar_asesoria/$row.num_as"><img src="/static/images/star.png" width="30" height="30"></a></td>
+                            <td width="30" height="30" data-toggle="tooltip" data-placement="top" title="Calificada"><a href="/valorar/$row.num_as" ><img src="/static/images/bookmark-star.png" width="30" height="30"></a></td>
+                        $elif row.estado == 'calificado':
+                            <td width="30" height="30" data-toggle="tooltip" data-placement="top" title="Calificar"><img src="/static/images/star.png" width="30" height="30"></td>
                     </tr>
         </tbody>
     </table>

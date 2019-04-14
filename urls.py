@@ -19,4 +19,5 @@ urls = (
     '/api_asesorias/?', 'application.api.asesorias.api_asesorias.Api_asesorias',
     '/api_valoracion/?', 'application.api.valoracion.api_valoracion.Api_valoracion',
     '/api_users/?', 'application.api.users.api_users.Api_users',
+    '/valorar/(.*)', 'application.controllers.asesoria.valoracion.Valorar'
    )

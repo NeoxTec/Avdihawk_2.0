@@ -1,0 +1,29 @@
+$def with(datos)
+<br>
+<div class="card text-center">
+        <div class="card-header">
+          Valoración
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Gracias por tomar la asesoría</h5>
+          <p class="card-text">Porfavor asigna una califiacion  a tu asesoria con $datos.asesor</p>
+          <form method="POST">
+          <select class="custom-select " id="valor" name="valor">
+                <option selected>Valor</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="3">4</option>
+                <option value="3">5</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Calificar</button>
+        </div>
+</form>
+        <a href="/index_asesoria"><button class="btn btn-danger btn-lg btn-block" style="width: 1070px; margin-left: 20px;">Cancelar</button></a>
+        <br>
+        <div class="card-footer text-muted">
+            ADVIHAWK
+        </div>
+      </div>

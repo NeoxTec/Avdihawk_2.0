@@ -20,7 +20,6 @@ def get_asesorias(num_as):
         print "Model get Error {}".format(e.args)
         print "Model get Message {}".format(e.message)
         return None
-
 '''
 Metodo para seleccionar un registro que coincida con el asesor de asesoria 
 '''
