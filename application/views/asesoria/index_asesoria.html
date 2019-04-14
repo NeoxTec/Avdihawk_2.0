@@ -8,7 +8,6 @@ $var tipo = params['tipo']
         $if params['tipo'] == 0:
             <thead>
                 <tr class="table-success">
-                    <th scope="col"><img src="/static/images/hastag.png" height="15" width="15">  #</th>
                     <th scope="col"><img src="/static/images/calendar.png" height="15" width="15">  Fecha</th>
                     <th scope="col"><img src="/static/images/clock.png" width="15" height="15">  Hora</th>
                     <th scope="col"><img src="/static/images/couple-of-arrows-changing-places.png" width="15" height="15">  Estado</th>
@@ -32,7 +31,6 @@ $var tipo = params['tipo']
             $if params['tipo'] == 0:
                 $for row in datos:
                     <tr>
-                        <td>$row.num_as</td>
                         <td>$row.dia</a></td>
                         <td>$row.hora</a></td>
                         <td>$row.estado</a></td>

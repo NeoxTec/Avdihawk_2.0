@@ -15,5 +15,9 @@ class Index:
         params = {}
         params['user'] = session_user
         params['tipo'] = session_privilege
-        asesorias = config.model_asesoria.get_all_asesorias().list()
-        return config.render.index_asesoria(asesorias,params) # Envia todos los registros y renderiza index.html
+        if params['tipo'] == 0:
+            asesorias = config.model_asesoria.get_asesor(session_user)
+            return config.render.index_asesoria(asesorias,params) # Envia todos los registros y renderiza index.html
+        elif params['tipo'] == 1:
+            asesorias = config.model_asesoria.get_solicitante(session_user)
+            return config.render.index_asesoria(asesorias,params) # Envia todos los registros y renderiza index.html
