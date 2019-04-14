@@ -75,7 +75,7 @@ if web.config.get('_session') is None:
         'loggedin': False,
         'count': 0,
         'id_as': 0,
-        'message': None
+        'message': None,
         }
         )
     web.config._session = session
