@@ -28,7 +28,7 @@ class Api_asesor:
             web.header('Content-Type', 'application/json')
             return json.dumps(asesor_json)
 
-# http://0.0.0.0:8080/api_asesor?user_hash=12345&action=put&id_as=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=0
+# http://0.0.0.0:8080/api_asesor?user_hash=12345&action=put&correo=correo&nombre=nombre&carrera=carrera&grado=grado
     def put(self, correo,nombre,carrera,grado):
         try:
             config.model.insert_asesor(correo,nombre,carrera,grado)

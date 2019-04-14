@@ -101,7 +101,7 @@ class Api_asesorias:
 
     def get_solicitante_estado(self, solicitante,estado):
         try:
-            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_asesor_estado&asesor=dieloxes@gmail.com&estado=aceptado
+            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_asesor_estado&solicitante=1717110611@utectulancingo.edu.mx.com&estado=aceptado
             result = config.model.get_solicitante_estado(solicitante,estado)
             asesorias_json = []
             for row in result:
