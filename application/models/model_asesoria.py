@@ -22,17 +22,6 @@ def get_asesorias(num_as):
         return None
 
 '''
-Metodo para mostrar el id_as
-'''
-def get_id_as(asesor):
-    try:
-        return db.select('asesor', what="id_as", where='asesor = $asesor') #selecciona el primer registro que coincida con el nombre
-    except Exception as e:
-        print "Model select_num_as Error ()",format(e.args)
-        print "Model select_num_as Message {}",format(e.message)
-        return None
-
-'''
 Metodo para seleccionar un registro que coincida con el asesor de asesoria 
 '''
 def get_asesor(asesor):

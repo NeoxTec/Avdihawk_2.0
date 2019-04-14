@@ -99,6 +99,7 @@ class Api_asesorias:
             web.header('Content-Type', 'application/json')
             return json.dumps(asesorias_json)
 
+
     def get_solicitante_estado(self, solicitante,estado):
         try:
             # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_asesor_estado&solicitante=1717110611@utectulancingo.edu.mx.com&estado=aceptado
@@ -178,6 +179,7 @@ class Api_asesorias:
             asesor=user_data.asesor
 
             tema=user_data.tema
+
 
             # user_hash
             if user_hash == '12345':
