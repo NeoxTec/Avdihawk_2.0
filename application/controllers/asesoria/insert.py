@@ -1,6 +1,12 @@
+# -*- coding:utf-8 -*-
 import web
 import config as config
 import app
+import time
+import datetime
+from datetime import date
+hoy = date.today()
+
 """
     Clase para insertar registros a la base de datos por medio de un formulario en la webapp
 """
@@ -10,7 +16,8 @@ class Insert:
         pass
     
     def GET(self):
-        return config.render.insert_asesoria() # renderiza la pagina insert.html
+        message = app.session.message
+        return config.render.insert_asesoria(message) # renderiza la pagina insert.html
     
     def POST(self):
         session_user = app.session.user
@@ -22,5 +29,16 @@ class Insert:
         asesor = config.model_asesor.select_correo(id_as)
         print id_as
         print asesor.correo
-        config.model_asesoria.insert_asesoria(dia,hora,session_user,asesor.correo,tema) # llama al metodo insert_cliente y le pasa los datos guardados 
-        raise web.seeother('/index_asesor') # redirecciona el HTML 
+        print hora
+        print hoy
+        print time.strftime("%H:%M")
+        if dia < str(hoy):
+            app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
+            raise web.seeother('/insert_asesoria')
+        elif hora < time.strftime("%H:%M"):
+            app.session.message = "La hora es incorrecta, no puedes ingresar un horario anterior al actual"
+            raise web.seeother('/insert_asesoria')
+        else:
+            app.session.message = "Su asesoría ha sido registrada exitosamente"
+            config.model_asesoria.insert_asesoria(dia,hora,session_user,asesor.correo,tema) # llama al metodo insert_cliente y le pasa los datos guardados 
+            raise web.seeother('/insert_asesoria') # redirecciona el HTML 

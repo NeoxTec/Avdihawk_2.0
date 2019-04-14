@@ -1,3 +1,14 @@
+$def with(message)
+$if message != None:
+    <br>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><img src="/static/images/warning.png" height="30" width="30">Alerta!</strong>
+        <br>
+        <p>$message</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 <br>
 <h1 class="text-center"><img src="/static/images/resume.png" height="50" width="50">  Solicitud de Asesoría</h1>
 <br>
