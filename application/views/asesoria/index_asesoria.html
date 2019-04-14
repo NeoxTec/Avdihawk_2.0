@@ -24,6 +24,7 @@ $var tipo = params['tipo']
                     <th scope="col"><img src="/static/images/couple-of-arrows-changing-places.png" width="15" height="15">  Estado</th>
                     <th scope="col"><img src="/static/images/couple-of-arrows-changing-places.png" width="15" height="15">  Asesor</th>
                     <th scope="col"><img src="/static/images/content.png" width="15" height="15">  Tema y lugar</th>
+                    <th scope="col"><img src="/static/images/rating.png" width="15" height="15">Evaluar</th>
             </tr>
         </thead>
         <tbody>
@@ -45,6 +46,8 @@ $var tipo = params['tipo']
                         <td>$row.estado</a></td>
                         <td>$row.asesor</a></td>
                         <td>$row.tema</a></td>
+                        $if row.estado == 'finalizado':
+                            <td width="30" height="30"><a href="/editar_asesoria/$row.num_as"><img src="/static/images/star.png" width="30" height="30"></a></td>
                     </tr>
         </tbody>
     </table>
