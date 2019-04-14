@@ -3,6 +3,7 @@ import hmac
 import application.models.model_users as model_users
 import application.models.model_logs as model_logs
 import application.models.model_registro as model_registro
+import application.models.model_asesor as model_asesor
 import app
 
 render = web.template.render('application/views/main/', base='master_a')

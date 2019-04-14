@@ -4,15 +4,21 @@ import app
 
 db = app.db
 
-'''
-Metodo para seleccionar todos los registros de la tabla asesoria
-'''
-def get_asesoria():
+def get_all_asesorias():
     try:
-        return db.select('asesorias') # selecciona todos los registros de la tabla de clientes
+        return db.select('asesorias')
     except Exception as e:
-        print "Model select_asesoria Error ()",format(e.args)
-        print "Model select_asesoria Message {}",format(e.message)
+        print "Model get all Error {}".format(e.args)
+        print "Model get all Message {}".format(e.message)
+        return None
+
+
+def get_asesorias(num_as):
+    try:
+        return db.select('asesorias', where='num_as=$num_as', vars=locals())[0]
+    except Exception as e:
+        print "Model get Error {}".format(e.args)
+        print "Model get Message {}".format(e.message)
         return None
 
 '''
@@ -27,26 +33,42 @@ def get_id_as(asesor):
         return None
 
 '''
-Metodo para seleccionar un registro que coincida con el asesor de asesoria dado
+Metodo para seleccionar un registro que coincida con el asesor de asesoria 
 '''
-def get_solicitado(asesor):
-    try:
-        return db.select('asesorias', where= 'asesor = $asesor', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
-    except Exception as e:
-        print "Model select_num_as Error ()",format(e.args)
-        print "Model select_num_as Message {}",format(e.message)
-        return None
+def get_asesor(asesor):
+        try:
+            return db.select('asesorias', where="asesor = $asesor", vars=locals())
+        except Exception as e:
+            print "Model get Error {}".format(e.args)
+            print "Model get Message {}".format(e.message)
+            return None
+
+def get_asesor_estado(asesor,estado):
+        try:
+            return db.select('asesorias', where='asesor = $asesor'and 'estado = $estado',vars=locals() )
+        except Exception as e:
+            print "Model get Error {}".format(e.args)
+            print "Model get Message {}".format(e.message)
+            return None
 
 '''
-Metodo para seleccionar un registro que coincida con el asesor de asesoria dado
+Metodo para seleccionar un registro que coincida con el solicitante de asesoria 
 '''
 def get_solicitante(solicitante):
-    try:
-        return db.select('asesorias', where= 'solicitante = $solicitante', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
-    except Exception as e:
-        print "Model select_num_as Error ()",format(e.args)
-        print "Model select_num_as Message {}",format(e.message)
-        return None
+        try:
+            return db.select('asesorias', where="solicitante = $solicitante", vars=locals())
+        except Exception as e:
+            print "Model get Error {}".format(e.args)
+            print "Model get Message {}".format(e.message)
+            return None
+
+def get_solicitante_estado(solicitante,estado):
+        try:
+            return db.select('asesorias', where='solicitante = $solicitante'and 'estado = $estado',vars=locals() )
+        except Exception as e:
+            print "Model get Error {}".format(e.args)
+            print "Model get Message {}".format(e.message)
+            return None
 
 '''
 Metodo para seleccionar un registro que coincida con el solicitante de asesoria dado

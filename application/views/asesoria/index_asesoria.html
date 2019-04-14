@@ -5,6 +5,7 @@ $var tipo = params['tipo']
 <br>
 <section class="table-responsive-lg">
     <table class="table table-bordered table-striped">
+        $if params['tipo'] == 0:
             <thead>
                 <tr class="table-success">
                     <th scope="col"><img src="/static/images/hastag.png" height="15" width="15">  #</th>
@@ -42,6 +43,7 @@ $var tipo = params['tipo']
             $elif params['tipo'] == 1:
                 $for row in datos:
                     <tr>
+                        <td>$row.num_as</td>
                         <td>$row.dia</a></td>
                         <td>$row.hora</a></td>
                         <td>$row.estado</a></td>

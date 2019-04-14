@@ -1,13 +1,13 @@
 import web
-import config
-import json
+import config as config
+import json 
 
 
 class Api_valoracion:
-    def get(self, num_val):
+    def get(self, asesoria):
         try:
             # http://0.0.0.0:8080/api_valoracion?user_hash=12345&action=get
-            if num_val is None:
+            if asesoria is None:
                 result = config.model.get_all_valoracion()
                 valoracion_json = []
                 for row in result:
@@ -16,10 +16,12 @@ class Api_valoracion:
                 web.header('Content-Type', 'application/json')
                 return json.dumps(valoracion_json)
             else:
-                # http://0.0.0.0:8080/api_valoracion?user_hash=12345&action=get&num_val=1
-                result = config.model.get_valoracion(int(num_val))
+                # http://0.0.0.0:8080/api_valoracion?user_hash=12345&action=get&asesoria=1
+                result = config.model.get_valoracion(int(asesoria))
                 valoracion_json = []
-                valoracion_json.append(dict(result))
+                for row in result:
+                    tmp = dict(row)
+                    valoracion_json.append(tmp)
                 web.header('Content-Type', 'application/json')
                 return json.dumps(valoracion_json)
         except Exception as e:
@@ -74,15 +76,18 @@ class Api_valoracion:
         try:
             user_hash = user_data.user_hash  # user validation
             action = user_data.action  # action GET, PUT, DELETE, UPDATE
-            num_val=user_data.num_val
-            valor=user_data.valor
-            asesoria=user_data.asesoria
+            num_val=user_data.num_val
+
+            valor=user_data.valor
+
+            asesoria=user_data.asesoria
+
             # user_hash
             if user_hash == '12345':
                 if action is None:
                     raise web.seeother('/404')
                 elif action == 'get':
-                    return self.get(num_val)
+                    return self.get(asesoria)
                 elif action == 'put':
                     return self.put(valor,asesoria)
                 elif action == 'delete':

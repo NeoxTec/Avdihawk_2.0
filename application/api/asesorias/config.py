@@ -1,3 +1,3 @@
 import web
-import application.models.model_asesorias
-model = application.models.model_asesorias
+import application.models.model_asesoria
+model = application.models.model_asesoria

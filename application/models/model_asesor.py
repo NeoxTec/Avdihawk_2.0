@@ -51,9 +51,9 @@ def get_asesor_carrera(carrera):
 '''
 Metodo para insertar un nuevo registro 
 '''
-def insert_asesor(id_as,correo,habilidades,grado):
+def insert_asesor(correo,nombre,carrera,grado):
     try:
-        return db.insert('asesor',id_as=id_as,correo=correo,habilidades=habilidades,grado=grado) # inserta un registro en clientes
+        return db.insert('asesor',correo=correo,nombre=nombre,carrera=carrera,grado=grado) # inserta un registro en clientes
     except Exception as e:
         print "Model insert_asesor Error ()",format(e.args)
         print "Model insert_asesor Message {}",format(e.message)
@@ -73,11 +73,12 @@ def delete_asesor(id_as):
 '''
 Metodo para actualizar el nombre,telefono,correo y direccion recibidos
 '''
-def update_asesor(id_as,correo,habilidades): # actualiza el registro
+def update_asesor(id_as,correo,horario,habilidades,grado): # actualiza el registro
     try:
             return db.update('asesor',
-            correo=correo,
+            horario=horario,
             habilidades=habilidades,
+            grado=grado,
             where='id_as=$id_as',
             vars=locals())
     except Exception as e:

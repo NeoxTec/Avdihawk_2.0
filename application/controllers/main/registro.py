@@ -20,5 +20,9 @@ class Insert():
         carrera = formulario['carrera']
         grado = formulario['grado']
         tipo = formulario['tipo']
-        config.model_registro.insert_registro(correo,nombre,carrera,grado,tipo)
+        if tipo == '0':
+            config.model_asesor.insert_asesor(correo,nombre,carrera,grado)
+            config.model_registro.insert_registro(correo,nombre,carrera,grado,tipo)
+        else:
+            config.model_registro.insert_registro(correo,nombre,carrera,grado,tipo)
         raise web.seeother('/') # render registro index.html

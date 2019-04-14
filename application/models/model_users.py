@@ -11,8 +11,6 @@ def validate_user(user):
         print(("Model get all Message {}".format(e.message)))
         return None
 
-
-
 def get_all_users():
     try:
         return db.select('users') 
@@ -40,4 +38,17 @@ def edit_grado(user,grado):
     except Exception as e:
         print("Model update Error {}".format(e.args))
         print("Model updateMessage {}".format(e.message))
+        return None
+
+def insert_users(correo,nombre,carrera,grado,tipo):
+    try:
+        return db.insert('users',
+        user=correo,
+        nombre=nombre,
+        carrera=carrera,
+        grado=grado,
+        tipo=tipo)
+    except Exception as e:
+        print "Model insert Error {}".format(e.args)
+        print "Model insert Message {}".format(e.message)
         return None

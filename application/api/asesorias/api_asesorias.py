@@ -1,5 +1,5 @@
 import web
-import config
+import config as config
 import json
 
 
@@ -14,14 +14,101 @@ class Api_asesorias:
                     tmp = dict(row)
                     asesorias_json.append(tmp)
                 web.header('Content-Type', 'application/json')
-                return json.dumps(asesorias_json)
+                return json.dumps(asesorias_json, sort_keys=True, default=str)
+                #return json.dumps()
             else:
                 # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get&num_as=1
                 result = config.model.get_asesorias(int(num_as))
                 asesorias_json = []
                 asesorias_json.append(dict(result))
                 web.header('Content-Type', 'application/json')
-                return json.dumps(asesorias_json)
+                return json.dumps(asesorias_json, sort_keys=True, default=str)
+        except Exception as e:
+            print "GET Error {}".format(e.args)
+            asesorias_json = '[]'
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesorias_json)
+
+    def get_asesor(self, asesor):
+        try:
+            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get
+            if asesor is None:
+                result = config.model.get_all_asesorias()
+                asesorias_json = []
+                for row in result:
+                    tmp = dict(row)
+                    asesorias_json.append(tmp)
+                web.header('Content-Type', 'application/json')
+                return json.dumps(asesorias_json, sort_keys=True, default=str)
+                #return json.dumps()
+            else:
+                # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_asesor&asesor=dieloxes@gmail.com
+                result = config.model.get_asesor(asesor)
+                asesorias_json = []
+                for row in result:
+                    tmp = dict(row)
+                    asesorias_json.append(tmp)
+                web.header('Content-Type', 'application/json')
+                return json.dumps(asesorias_json, sort_keys=True, default=str)
+        except Exception as e:
+            print "GET Error {}".format(e.args)
+            asesorias_json = '[]'
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesorias_json)
+
+    def get_solicitante(self, solicitante):
+        try:
+            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get
+            if solicitante is None:
+                result = config.model.get_all_asesorias()
+                asesorias_json = []
+                for row in result:
+                    tmp = dict(row)
+                    asesorias_json.append(tmp)
+                web.header('Content-Type', 'application/json')
+                return json.dumps(asesorias_json, sort_keys=True, default=str)
+                #return json.dumps()
+            else:
+                # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_solicitante&solicitante=1717110611@utectulancingo.edu.mx
+                result = config.model.get_solicitante(solicitante)
+                asesorias_json = []
+                for row in result:
+                    tmp = dict(row)
+                    asesorias_json.append(tmp)
+                web.header('Content-Type', 'application/json')
+                return json.dumps(asesorias_json, sort_keys=True, default=str)
+        except Exception as e:
+            print "GET Error {}".format(e.args)
+            asesorias_json = '[]'
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesorias_json)
+
+    def get_asesor_estado(self, asesor,estado):
+        try:
+            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_asesor_estado&asesor=dieloxes@gmail.com&estado=aceptado
+            result = config.model.get_asesor_estado(asesor,estado)
+            asesorias_json = []
+            for row in result:
+                tmp = dict(row)
+                asesorias_json.append(tmp)
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesorias_json, sort_keys=True, default=str)
+        except Exception as e:
+            print "GET Error {}".format(e.args)
+            asesorias_json = '[]'
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesorias_json)
+
+    def get_solicitante_estado(self, solicitante,estado):
+        try:
+            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_asesor_estado&asesor=dieloxes@gmail.com&estado=aceptado
+            result = config.model.get_solicitante_estado(solicitante,estado)
+            asesorias_json = []
+            for row in result:
+                tmp = dict(row)
+                asesorias_json.append(tmp)
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesorias_json, sort_keys=True, default=str)
         except Exception as e:
             print "GET Error {}".format(e.args)
             asesorias_json = '[]'
@@ -29,9 +116,9 @@ class Api_asesorias:
             return json.dumps(asesorias_json)
 
 # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=put&num_as=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=0
-    def put(self, dia,hora,estado,solicitante,asesor,tema):
+    def put(self,dia,hora,solicitante,asesor,tema):
         try:
-            config.model.insert_asesorias(dia,hora,estado,solicitante,asesor,tema)
+            config.model.insert_asesoria(dia,hora,solicitante,asesor,tema)
             asesorias_json = '[{200}]'
             web.header('Content-Type', 'application/json')
             return json.dumps(asesorias_json)
@@ -42,7 +129,7 @@ class Api_asesorias:
 # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=delete&num_as=1
     def delete(self, num_as):
         try:
-            config.model.delete_asesorias(num_as)
+            config.model.delete_asesoria(num_as)
             asesorias_json = '[{200}]'
             web.header('Content-Type', 'application/json')
             return json.dumps(asesorias_json)
@@ -51,9 +138,9 @@ class Api_asesorias:
             return None
 
 # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=update&num_as=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=default.jpg
-    def update(self, num_as, dia,hora,estado,solicitante,asesor,tema):
+    def update(self, num_as,estado):
         try:
-            config.model.edit_asesorias(num_as,dia,hora,estado,solicitante,asesor,tema)
+            config.model.update_asesoria(num_as,estado)
             asesorias_json = '[{200}]'
             web.header('Content-Type', 'application/json')
             return json.dumps(asesorias_json)
@@ -78,25 +165,40 @@ class Api_asesorias:
         try:
             user_hash = user_data.user_hash  # user validation
             action = user_data.action  # action GET, PUT, DELETE, UPDATE
-            num_as=user_data.num_as
-            dia=user_data.dia
-            hora=user_data.hora
-            estado=user_data.estado
-            solicitante=user_data.solicitante
-            asesor=user_data.asesor
-            tema=user_data.tema
+            num_as=user_data.num_as
+
+            dia=user_data.dia
+
+            hora=user_data.hora
+
+            estado=user_data.estado
+
+            solicitante=user_data.solicitante
+
+            asesor=user_data.asesor
+
+            tema=user_data.tema
+
             # user_hash
             if user_hash == '12345':
                 if action is None:
                     raise web.seeother('/404')
                 elif action == 'get':
                     return self.get(num_as)
+                elif action == 'get_asesor':
+                    return self.get_asesor(asesor)
+                elif action == 'get_asesor_estado':
+                    return self.get_asesor_estado(asesor,estado)
+                elif action == 'get_solicitante':
+                    return self.get_solicitante(solicitante)
+                elif action == 'get_solicitante_estado':
+                    return self.get_solicitante_estado(solicitante,estado)
                 elif action == 'put':
-                    return self.put(dia,hora,estado,solicitante,asesor,tema)
+                    return self.put(dia,hora,solicitante,asesor,tema)
                 elif action == 'delete':
                     return self.delete(num_as)
                 elif action == 'update':
-                    return self.update(num_as, dia,hora,estado,solicitante,asesor,tema)
+                    return self.update(num_as,estado)
             else:
                 raise web.seeother('/404')
         except Exception as e:
