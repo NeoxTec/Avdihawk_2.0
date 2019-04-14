@@ -20,7 +20,7 @@ Metodo para seleccionar un registro que coincida con el id dado
 '''
 def select_id_as(id_as):
     try:
-        return db.select('asesor', what=" ",where= 'id_as = $id_as', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
+        return db.select('asesor',where= 'id_as = $id_as', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
     except Exception as e:
         print "Model select_id_as Error ()",format(e.args)
         print "Model select_id_as Message {}",format(e.message)
