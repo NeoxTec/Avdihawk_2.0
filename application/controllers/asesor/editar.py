@@ -25,8 +25,9 @@ class Editar():
         formulario = web.input() # almacena los datos del formulario web
         id_as = formulario['id_as'] # almacena el rfc del input 
         correo = formulario['correo'] # almacena el nombre del input email
+        horario = formulario['horario']
         grado = formulario['grado'] #almacena el grado
         habilidades = formulario['habilidades'] # almacena el telefono del input 
         config.model_users.edit_grado(correo,grado)
-        config.model_asesor.update_asesor(id_as,correo,habilidades)
+        config.model_asesor.update_asesor(id_as,correo,horario,habilidades,grado)
         raise web.seeother('/') # redirecciona al index
