@@ -28,6 +28,21 @@ class Api_asesor:
             web.header('Content-Type', 'application/json')
             return json.dumps(asesor_json)
 
+    def get_correo(self,id_as):
+        try:
+         # http://0.0.0.0:8080/api_asesor?user_hash=12345&action=get_correo&id_as=1
+            result = config.model.select_correo(int(id_as))
+            asesor_json = []
+            asesor_json.append(dict(result))
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesor_json)
+        except Exception as e:
+            print "GET Error {}".format(e.args)
+            asesor_json = '[]'
+            web.header('Content-Type', 'application/json')
+            return json.dumps(asesor_json)
+
+
 # http://0.0.0.0:8080/api_asesor?user_hash=12345&action=put&correo=correo&nombre=nombre&carrera=carrera&grado=grado
     def put(self, correo,nombre,carrera,grado):
         try:
@@ -101,6 +116,8 @@ class Api_asesor:
                     raise web.seeother('/404')
                 elif action == 'get':
                     return self.get(id_as)
+                elif action == 'get_correo':
+                    return self.get_correo(id_as)
                 elif action == 'put':
                     return self.put(correo,nombre,carrera,grado)
                 elif action == 'delete':

@@ -27,6 +27,18 @@ def select_id_as(id_as):
         return None
 
 '''
+Metodo para seleccionar un registro que coincida con el id dado
+'''
+def select_correo(id_as):
+    try:
+        return db.select('asesor',what="correo", where= 'id_as = $id_as', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
+    except Exception as e:
+        print "Model select_id_as Error ()",format(e.args)
+        print "Model select_id_as Message {}",format(e.message)
+        return None
+
+
+'''
 Metodo para seleccionar un registro que coincida con el correo dado
 '''
 def get_asesor(correo):

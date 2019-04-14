@@ -19,5 +19,8 @@ class Insert:
         dia = formulario['dia'] # almacena el dia seleccionado en el input
         hora = formulario['hora'] # almacena el nombre escrito en el input
         tema = formulario ['tema'] # almacena el telefono escrito en el input
-        config.model_asesoria.insert_asesoria(dia,hora,session_user,id_as,tema) # llama al metodo insert_cliente y le pasa los datos guardados 
+        asesor = config.model_asesor.select_correo(id_as)
+        print id_as
+        print asesor.correo
+        config.model_asesoria.insert_asesoria(dia,hora,session_user,asesor.correo,tema) # llama al metodo insert_cliente y le pasa los datos guardados 
         raise web.seeother('/index_asesor') # redirecciona el HTML 
