@@ -3,15 +3,39 @@ $var tipo = params['tipo']
 
 <br>
 <h1 class="text-center"><img src="/static/images/multiple-users-silhouette.png" height="50" width="50" margin-left="20px">  Asesores</h1>
+<form method="POST">
+    <section class="form-group">
+        <button type="submit" class="btn btn-success  btn-lg " style="float:right; height: 40px; width: 200px; font-size: 20px;" >Buscar</button>
+        <select class="form-control" id="carrera" name="carrera" style="width: 700px; float: right; margin-right: 100px;">
+            <option selected >Selecciona una carrera: </option>
+            <option value="todas"  class="font-weight-bold">Todas</option>
+            <option class="font-weight-bold">Ingenierías</option>
+            <option value="tic">Tecnologías de la información y la comunicación</option>
+            <option value="dn">Desarrollo e Inovación Empresarial</option>
+            <option value="en">Energías Renovables</option>
+            <option value="mec">Mecatrónica</option>
+            <option value="nano">Nanotecnología</option>
+            <option value="in">Ingeniería Industrial</option>
+            <option class="font-weight-bold">Licenciaturas</option>
+            <option value="conta">Contaduría</option>
+            <option value="enf">Enfermería</option>
+            <option value="crimi">Criminalística</option>
+            <option value="tf">Terapía Física</option>
+            <option value="sr">Salud reproductiva y partería</option>
+            <option value="di">Diseño digital y producción audiovisual</option>
+          </select>
+        </section>
+</form>
+<br>
+<br>
 <br>
 <section class="table-responsive-lg">
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="table-success">
-                <th scope="col"><img src="/static/images/hastag.png" height="15" width="15">  #</th>
+                <th scope="col"><img src="/static/images/hastag.png" height="15" width="15"></th>
                 <th scope="col"><img src="/static/images/opened-email-envelope.png" height="15" width="15">  Nombre</th>
                 <th scope="col"><img src="/static/images/user-silhouette.png" height="15" width="15">  Carrera</th>
-                <th scope="col"><img src="/static/images/user-silhouette.png" height="15" width="15">  Correo</th>
                 <th scope="col"><img src="/static/images/skills.png" width="15" height="15">  Habilidades</th>
                 <th scope="col"><img src="/static/images/skills.png" width="15" height="15">  Grado</th>
             </tr>
@@ -21,10 +45,32 @@ $var tipo = params['tipo']
                 <tr>
                     <td>$row.id_as</a></td>
                     <td><a href="/perfil_asesor/$row.id_as">$row.nombre</a></td>
-                    <td>$row.correo</a></td>
-                    <td>$row.carrera</a></td>
-                    <td>$row.habilidades</a></td>
-                    <td>$row.grado</a></td>
+                    $if row.carrera == 'tic':
+                        <td>Tecnologías de la información y la comunicación</td>
+                    $elif row.carrera == 'dn':
+                        <td>Desarrollo e Inovación Empresarial</td>
+                    $elif row.carrera == 'en':
+                        <td>Energías Renovables</td>
+                    $elif row.carrera == 'mec':
+                        <td>Mecatrónica</td>
+                    $elif row.carrera == 'nano':
+                        <td>Nanotecnología</td>
+                    $elif row.carrera == 'in':
+                        <td>Ingeniería Industrial</td>
+                    $elif row.carrera == 'conta':
+                        <td>Contaduría</td>
+                    $elif row.carrera == 'enf':
+                        <td>Enfermería</td>
+                    $elif row.carrera == 'crimi':
+                        <td>Criminalística</td>
+                    $elif row.carrera == 'tf':
+                        <td>Terapía Física</td>
+                    $elif row.carrera == 'sr':
+                        <td>Salud reproductiva y partería</td>
+                    $elif row.carrera == 'di':
+                        <td>Diseño digital y producción audiovisual</td>
+                    <td>$row.habilidades</td>
+                    <td>$row.grado</td>
                 </tr>
         </tbody>
     </table>

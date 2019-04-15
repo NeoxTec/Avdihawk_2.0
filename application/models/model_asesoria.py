@@ -52,7 +52,7 @@ def get_solicitante(solicitante):
 
 def get_solicitante_estado(solicitante,estado):
         try:
-            return db.select('asesorias', where='solicitante = $solicitante'and 'estado = $estado',vars=locals() )
+            return db.select('asesorias', where='solicitante = $solicitante'and 'estado = $estado',vars=locals())
         except Exception as e:
             print "Model get Error {}".format(e.args)
             print "Model get Message {}".format(e.message)

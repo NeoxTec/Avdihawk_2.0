@@ -19,5 +19,20 @@ class Index:
         params['picture'] = session_picture
         asesor = config.model_asesor.get_all_asesor().list() # selecciona todos los registros de clientes
         return config.render.index_asesor(asesor,params) # Envia todos los registros y renderiza index.html
-
-
+    
+    def POST(self):
+        formulario = web.input()
+        carrera = formulario['carrera']
+        session_user = app.session.user
+        session_privilege = app.session.tipo
+        session_picture = app.session.picture
+        params = {}
+        params['user'] = session_user
+        params['tipo'] = session_privilege
+        params['picture'] = session_picture
+        if carrera == 'todas':
+            asesor = config.model_asesor.get_all_asesor().list() # selecciona todos los registros de clientes
+            return config.render.index_asesor(asesor,params)
+        else:
+            asesor = config.model_asesor.select_carrera(carrera) # selecciona todos los registros de clientes
+            return config.render.index_asesor(asesor,params) # Envia todos los registros y renderiza index.html

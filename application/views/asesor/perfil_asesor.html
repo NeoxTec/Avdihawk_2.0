@@ -16,7 +16,7 @@ $def with(datos,params)
 <section class="container">
     <h3 class="text-left"><img src="/static/images/id_cred.png" height="50" width="50">  ID:</h3><input type="text" class="form-control" readonly="true" value="$datos.id_as" id="id_as" name="id_as"> 
     <br>
-    <h3 class="text-left"><img src="/static/images/gmail.png" height="50" width="50">  Correo:</h3><input type="text" class="form-control" readonly="true" value="$params['user']" id="correo" name="correo">
+    <h3 class="text-left"><img src="/static/images/gmail.png" height="50" width="50">  Correo:</h3><input type="text" class="form-control" readonly="true" value="$datos.correo" id="correo" name="correo">
     <br>
     <h3 class="text-left"><img src="/static/images/horario.png" height="50" width="50">  Horario:</h3><input type="text" class="form-control" readonly="true" value="$datos.horario" id="horario" name="horario">
     <br>
@@ -24,7 +24,30 @@ $def with(datos,params)
     <br>
     <h3 class="text-left"><img src="/static/images/degree.png" height="50" width="50">  Grado:</h3><input type="text" class="form-control"  readonly="true" value="$datos.grado" id="grado" name="grado">
     <br>
-    <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Validado:</h3><input type="text" class="form-control"  readonly="true" value="$datos.validado" id="validado" name="validado">
+    $if datos.carrera == 'tic':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Tecnologías de la información y la comunicación" id="validado" name="validado">
+    $elif datos.carrera == 'dn':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Desarrollo e Inovación Empresarial" id="validado" name="validado">
+    $elif datos.carrera == 'en':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Energías Renovables" id="validado" name="validado">
+    $elif datos.carrera == 'mec':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Mecatrónica" id="validado" name="validado">
+    $elif datos.carrera == 'nano':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Nanotecnología" id="validado" name="validado">
+    $elif datos.carrera == 'in':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Ingeniería Industrial" id="validado" name="validado">
+    $elif datos.carrera == 'conta':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Contaduría" id="validado" name="validado">
+    $elif datos.carrera == 'enf':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Enfermería" id="validado" name="validado">
+    $elif datos.carrera == 'crimi':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Criminalística" id="validado" name="validado">
+    $elif datos.carrera == 'tf':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Terapía Física" id="validado" name="validado">
+    $elif datos.carrera == 'sr':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Salud reproductiva y partería" id="validado" name="validado">
+    $elif datos.carrera == 'di':
+        <h3 class="text-left"><img src="/static/images/check-mark.png" height="50" width="50">  Carrera:</h3><input type="text" class="form-control"  readonly="true" value="Diseño digital y producción audiovisual" id="validado" name="validado">
     <br>
     <a href="/insert_asesoria"><button type="button" class="btn btn-success btn-lg btn-block"><img src="/static/images/plus.png" height="40" width="40">  Agregar Asesoria</button></a><br>
     <a href="/index_asesor"><button type="submit" class="btn btn-secondary btn-lg btn-block"><img src="/static/images/back.png" height="40" width="40">Regresar</button></a>

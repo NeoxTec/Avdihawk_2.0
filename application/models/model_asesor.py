@@ -37,6 +37,16 @@ def select_correo(id_as):
         print "Model select_id_as Message {}",format(e.message)
         return None
 
+'''
+Metodo para seleccionar un registro que coincida con el id dado
+'''
+def select_carrera(carrera):
+    try:
+        return db.select('asesor', where= 'carrera = $carrera', vars=locals()) #selecciona el primer registro que coincida con el nombre
+    except Exception as e:
+        print "Model select_id_as Error ()",format(e.args)
+        print "Model select_id_as Message {}",format(e.message)
+        return None
 
 '''
 Metodo para seleccionar un registro que coincida con el correo dado

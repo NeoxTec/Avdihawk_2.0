@@ -102,7 +102,7 @@ class Api_asesorias:
 
     def get_solicitante_estado(self, solicitante,estado):
         try:
-            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_asesor_estado&solicitante=1717110611@utectulancingo.edu.mx.com&estado=aceptado
+            # http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=get_solicitante_estado&solicitante=1717110611@utectulancingo.edu.mx.com&estado=aceptado
             result = config.model.get_solicitante_estado(solicitante,estado)
             asesorias_json = []
             for row in result:
@@ -116,7 +116,7 @@ class Api_asesorias:
             web.header('Content-Type', 'application/json')
             return json.dumps(asesorias_json)
 
-# http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=put&num_as=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=0
+# http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=put&dia=dia&hora=hora&solicitante=solicitante&asesor=asesor&tema=tema
     def put(self,dia,hora,solicitante,asesor,tema):
         try:
             config.model.insert_asesoria(dia,hora,solicitante,asesor,tema)
@@ -138,7 +138,7 @@ class Api_asesorias:
             print "DELETE Error {}".format(e.args)
             return None
 
-# http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=update&num_as=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=default.jpg
+# http://0.0.0.0:8080/api_asesorias?user_hash=12345&action=update&num_as=1&estado=estado
     def update(self, num_as,estado):
         try:
             config.model.update_asesoria(num_as,estado)
