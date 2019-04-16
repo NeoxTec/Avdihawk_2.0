@@ -32,7 +32,7 @@ class Insert:
         print hora
         print hoy
         print time.strftime("%H:%M")
-        if dia < str(hoy):
+        if str(dia) < str(hoy):
             app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
             raise web.seeother('/insert_asesoria')
         elif str(hora) < time.strftime("%H:%M"):
