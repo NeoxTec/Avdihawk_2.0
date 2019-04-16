@@ -35,7 +35,7 @@ class Insert:
         if dia < str(hoy):
             app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
             raise web.seeother('/insert_asesoria')
-        elif hora < time.strftime("%H:%M"):
+        elif str(hora) < time.strftime("%H:%M"):
             app.session.message = "La hora es incorrecta, no puedes ingresar un horario anterior al actual"
             raise web.seeother('/insert_asesoria')
         else:
