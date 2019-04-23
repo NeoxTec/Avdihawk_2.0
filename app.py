@@ -22,7 +22,7 @@ remote=True
     Base de datos remota (uso de db_cloud)
     Login de Google direccionado a una url en la nube ('http://REMOTE_SERVER/auth/%s/callback')
 '''
-remote = True
+remote = False
 
 if remote is True: # Config remote database and remote oauth host
     db = database.db_cloud
@@ -36,7 +36,7 @@ elif remote is False: # Config local database and local oauth host
 ssl = False
 
 # secret_key for hmac technique
-secret_key = "kuorra"
+secret_key = "advihawk"
 
 # Time session, after logout
 expires = 5 # minutes

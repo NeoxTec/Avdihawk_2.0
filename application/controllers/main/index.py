@@ -32,6 +32,7 @@ class Index:
             params['tipo'] = session_privilege
             params['picture'] = session_picture
             if session_privilege == 0:
+                config.model_registro.edit_picture(session_user,session_picture)
                 return config.render.asesor(params)
             elif session_privilege == 1:
                 return config.render.estandar(params)

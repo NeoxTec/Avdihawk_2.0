@@ -31,29 +31,41 @@ def delete_registro(correo):
         return None
 
 
-def insert_registro(correo,nombre,carrera,grado,tipo):
+def insert_registro(correo,nombre,carrera,grado,tipo,user_hash,picture):
     try:
         return db.insert('users',
         user=correo,
         nombre=nombre,
         carrera=carrera,
         grado=grado,
-        tipo=tipo)
+        tipo=tipo,
+        user_hash = user_hash)
     except Exception as e:
         print "Model insert Error {}".format(e.args)
         print "Model insert Message {}".format(e.message)
         return None
 
 
-def edit_registro(correo,nombre,carrera,grado,tipo):
+def edit_registro(user,nombre,carrera,grado,tipo):
     try:
-        return db.update('users',correo=correo,
+        return db.update('users',user=user,
 nombre=nombre,
 carrera=carrera,
 grado=grado,
 tipo=tipo,
-                  where='correo=$user',
+                  where='user=$user',
                   vars=locals())
+    except Exception as e:
+        print "Model update Error {}".format(e.args)
+        print "Model updateMessage {}".format(e.message)
+        return None
+
+def edit_picture(user,picture):
+    try:
+        return db.update('users',user=user,
+        picture = picture,
+        where='user=$user',
+        vars=locals())
     except Exception as e:
         print "Model update Error {}".format(e.args)
         print "Model updateMessage {}".format(e.message)

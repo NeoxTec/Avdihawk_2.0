@@ -1,0 +1,1 @@
+'/api_evaluacion_asesor/?', 'application.api.evaluacion_asesor.api_evaluacion_asesor.Api_evaluacion_asesor',

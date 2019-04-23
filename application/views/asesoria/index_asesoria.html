@@ -1,7 +1,7 @@
 $def with(datos,params)
 $var tipo = params['tipo']
 <br>
-<h1 class="text-center"><img src="/static/images/consultant.png" height="50" width="50" margin-left="20px">  Asesorias</h1>
+<h1 class="text-center"><img src="/static/images/consultant.png" height="50" width="50" margin-left="20px">  Asesorías</h1>
 <br>
 <section class="table-responsive-lg">
     <table class="table table-bordered table-striped">
@@ -14,6 +14,7 @@ $var tipo = params['tipo']
                     <th scope="col"><img src="/static/images/couple-of-arrows-changing-places.png" width="15" height="15">  Solicitante</th>
                     <th scope="col"><img src="/static/images/content.png" width="15" height="15">  Tema y lugar</th>
                     <th scope="col"><img src="/static/images/resume.png" width="15" height="15">Editar</th>
+                    <th scope="col"><img src="/static/images/rating.png" width="15" height="15">Evaluar</th>
                 </tr>
             </thead>
         $if params['tipo'] == 1:
@@ -28,31 +29,33 @@ $var tipo = params['tipo']
             </tr>
         </thead>
         <tbody>
-            $if params['tipo'] == 0:
-                $for row in datos:
-                    <tr>
-                        <td>$row.dia</a></td>
-                        <td>$row.hora</a></td>
-                        <td>$row.estado</a></td>
-                        <td>$row.solicitante</a></td>
-                        <td>$row.tema</a></td>
-                        <td  width="30" height="30"><a href="/editar_asesoria/$row.num_as"><img src="/static/images/refresh.png" width="30" height="30"></a></td>
+        $if params['tipo'] == 0:
+            $for row in datos:
+                <tr>
+                    <td>$row.dia</a></td>
+                    <td>$row.hora</a></td>
+                    <td>$row.estado</a></td>
+                    <td>$row.solicitante</a></td>
+                    <td>$row.tema</a></td>
+                    <td  width="30" height="30"><a href="/editar_asesoria/$row.num_as"><img src="/static/images/refresh.png" width="30" height="30"></a></td>
+                    $if row.estado == 'finalizado':
+                        <td width="30" height="30" data-toggle="tooltip" data-placement="top" title="Calificar"><a href="/evaluacion_asesor/$row.num_as" ><img src="/static/images/bookmark-star.png" width="30" height="30"></a></td>
                     </tr>
-            $elif params['tipo'] == 1:
-                $for row in datos:
-                    <tr>
-                        <td>$row.dia</a></td>
-                        <td>$row.hora</a></td>
-                        <td>$row.estado</a></td>
-                        <td>$row.asesor</a></td>
-                        <td>$row.tema</a></td>
-                        $if row.estado == 'finalizado':
-                            <td width="30" height="30" data-toggle="tooltip" data-placement="top" title="Calificar"><a href="/valorar/$row.num_as" ><img src="/static/images/bookmark-star.png" width="30" height="30"></a></td>
-                        $elif row.estado == 'calificado':
-                            <td width="30" height="30" data-toggle="tooltip" data-placement="top" title="Calificada"><img src="/static/images/star.png" width="30" height="30"></td>
-                    </tr>
+        $elif params['tipo'] == 1:
+            $for row in datos:
+                <tr>
+                    <td>$row.dia</a></td>
+                    <td>$row.hora</a></td>
+                    <td>$row.estado</a></td>
+                    <td>$row.asesor</a></td>
+                    <td>$row.tema</a></td>
+                    $if row.estado == 'finalizado':
+                        <td width="30" height="30" data-toggle="tooltip" data-placement="top" title="Calificar"><a href="/evaluacion_alumno/$row.num_as" ><img src="/static/images/bookmark-star.png" width="30" height="30"></a></td>
+                    $elif row.estado == 'calificado':
+                        <td width="30" height="30" data-toggle="tooltip" data-placement="top" title="Calificada"><img src="/static/images/star.png" width="30" height="30"></td>
+                </tr>
         </tbody>
     </table>
 </section>
 <br>
-<a href="/"><button type="submit" class="btn btn-danger  btn-lg btn-block">Regresar</button></a>
+<a href="/"><button type="submit" class="btn btn-danger  btn-lg btn-block">Regresar</button></a><br>

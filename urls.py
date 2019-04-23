@@ -19,5 +19,10 @@ urls = (
     '/api_asesorias/?', 'application.api.asesorias.api_asesorias.Api_asesorias',
     '/api_valoracion/?', 'application.api.valoracion.api_valoracion.Api_valoracion',
     '/api_users/?', 'application.api.users.api_users.Api_users',
-    '/valorar/(.*)', 'application.controllers.asesoria.valoracion.Valorar'
+    '/valorar/(.*)', 'application.controllers.asesoria.valoracion.Valorar',
+    '/reporte_asesor/(.*)', 'application.controllers.asesoria.reporte_asesor.Reporte',
+    '/reporte_alumno/(.*)', 'application.controllers.asesoria.reporte_alumno.Reporte',
+    '/evaluacion_asesor/(.*)', 'application.controllers.asesoria.evaluacion_asesor.Evaluar',
+    '/evaluacion_alumno/(.*)', 'application.controllers.asesoria.evaluacion_alumno.Evaluar',
+    '/api_evaluacion_asesor/?', 'application.api.evaluacion_asesor.api_evaluacion_asesor.Api_evaluacion_asesor',
    )
