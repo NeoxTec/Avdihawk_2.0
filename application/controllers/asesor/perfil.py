@@ -10,14 +10,12 @@ class Perfil():
         pass
     
     def GET(self,id_as):
-        session_user = app.session.user
-        session_privilege = app.session.tipo
-        session_picture = app.session.picture
         app.session.id_as = id_as
         params = {}
-        params['user'] = session_user
-        params['tipo'] = session_privilege
-        params['picture'] = session_picture
         params['id_as'] = id_as
         perfil = config.model_asesor.select_id_as(id_as) # Selecciona el registro que coincida con el nombre
-        return config.render.perfil_asesor(perfil,params) # Envia el registro y renderiza el view.html
+        user = perfil.correo
+        print "Usuario" ,user
+        foto = config.model_users.get_picture(user)
+        print foto
+        return config.render.perfil_asesor(perfil,foto) # Envia el registro y renderiza el view.html

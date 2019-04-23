@@ -19,6 +19,13 @@ def get_all_users():
         print(("Model get all Message {}".format(e.message)))
         return None
 
+def get_picture(user):
+    try:
+        return db.select('users',what="picture", where= 'user = $user', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
+    except Exception as e:
+        print "Model get_picture Error ()",format(e.args)
+        print "Model get_picture Message {}",format(e.message)
+        return None
 
 def get_users(user):
     try:
