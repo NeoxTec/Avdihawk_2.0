@@ -35,6 +35,14 @@ def get_users(user):
         print(("Model get Message {}".format(e.message)))
         return None
 
+def get_nombre(user):
+    try:
+        return db.select('users',what="nombre", where= 'user = $user', vars=locals())[0] #selecciona el primer registro que coincida con el nombre
+    except Exception as e:
+        print "Model get_nombre Error ()",format(e.args)
+        print "Model get_nombre Message {}",format(e.message)
+        return None
+
 def edit_grado(user,grado):
     try:
         return db.update('users',

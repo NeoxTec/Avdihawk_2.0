@@ -24,10 +24,7 @@ class Evaluar():
         config.model_evaluacion_alumno.insert_evaluacion_alumno(asesoria,horas,asistencia,observaciones,calificacion,extra)
         evaluacion = config.model_evaluacion_asesor.asesor_evaluado(asesoria)
         print "evaluacion: ",evaluacion 
-        if evaluacion == 0:
-            estado = 'finalizado'
-            config.model_asesoria.update_asesoria(asesoria,estado)
-        else: 
+        if evaluacion == 1:
             estado = 'calificado'
             config.model_asesoria.update_asesoria(asesoria,estado)
         raise web.seeother('/index_asesoria') # redirecciona el HTML

@@ -33,7 +33,7 @@ class Evaluar():
         print "gusto:", gusto 
         config.model_evaluacion_asesor.insert_evaluacion_asesor(asesoria,horas,asistencia,comprension,razon,observaciones,calificacion,gusto)
         evaluacion = config.model_evaluacion_alumno.alumno_evaluado(asesoria)
-        if evaluacion == 0:
+        if evaluacion == 1:
             estado = 'finalizado'
             config.model_asesoria.update_asesoria(asesoria,estado)
         else: 
