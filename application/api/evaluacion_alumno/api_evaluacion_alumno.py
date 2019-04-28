@@ -1,5 +1,5 @@
 import web
-import config
+import config as config
 import json
 
 
@@ -27,6 +27,21 @@ class Api_evaluacion_alumno:
             evaluacion_alumno_json = '[]'
             web.header('Content-Type', 'application/json')
             return json.dumps(evaluacion_alumno_json)
+
+    def get_reporte(self,asesoria):
+        try:
+            # http://0.0.0.0:8080/api_evaluacion_alumno?user_hash=12345&action=get_reporte&asesoria=1
+            result = config.model.get_reporte_asesor(asesoria)
+            reporte_json = []
+            reporte_json.append(dict(result))
+            web.header('Content-Type', 'application/json')
+            return json.dumps(reporte_json, sort_keys=True, default=str)
+        except Exception as e:
+            print "GET Error {}".format(e.args)
+            reporte_json = '[]'
+            web.header('Content-Type', 'application/json')
+            return json.dumps(reporte_json)
+
 
 # http://0.0.0.0:8080/api_evaluacion_alumno?user_hash=12345&action=put&id_e=1&product=nuevo&description=nueva&stock=10&purchase_price=1&price_sale=3&product_image=0
     def put(self, asesoria,horas,asistencia,observaciones,calificacion,extra):
@@ -78,19 +93,28 @@ class Api_evaluacion_alumno:
         try:
             user_hash = user_data.user_hash  # user validation
             action = user_data.action  # action GET, PUT, DELETE, UPDATE
-            id_e=user_data.id_e
-            asesoria=user_data.asesoria
-            horas=user_data.horas
-            asistencia=user_data.asistencia
-            observaciones=user_data.observaciones
-            calificacion=user_data.calificacion
-            extra=user_data.extra
+            id_e=user_data.id_e
+
+            asesoria=user_data.asesoria
+
+            horas=user_data.horas
+
+            asistencia=user_data.asistencia
+
+            observaciones=user_data.observaciones
+
+            calificacion=user_data.calificacion
+
+            extra=user_data.extra
+
             # user_hash
             if user_hash == '12345':
                 if action is None:
                     raise web.seeother('/404')
                 elif action == 'get':
                     return self.get(id_e)
+                elif action == 'get_reporte':
+                    return self.get_reporte(asesoria)
                 elif action == 'put':
                     return self.put(asesoria,horas,asistencia,observaciones,calificacion,extra)
                 elif action == 'delete':

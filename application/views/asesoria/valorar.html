@@ -1,27 +1,45 @@
-$def with(datos)
+$def with(asesoria,datos)
 <br>
 <div class="card text-center">
         <div class="card-header">
-          Valoración
+          <img src="/static/images/list (2).png" height="40" width="40">  <h1>Resultados</h1>
         </div>
         <div class="card-body">
           <h5 class="card-title">Gracias por tomar la asesoría</h5>
-          <p class="card-text">Porfavor asigna una califiacion  a tu asesoria con $datos.asesor</p>
-          <form method="POST">
-          <select class="custom-select " id="valor" name="valor">
-                <option selected>Valor</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="3">4</option>
-                <option value="3">5</option>
-            </select>
+          <p class="card-text">Resultados de tu asesoria con $asesoria.asesor</p>
+          <section class="form-group">
+              <h3 class="text-left"><img src="/static/images/evaluation.png" height="40" width="40"> Calificacion General:</h3>
+              <select class="form-control" id="calificacion" name="calificacion" disabled>
+                  <option selected class="font-weight-bold" disabled>Selecciona la calificación: </option>
+                  $if datos.calificacion == 'necesita mejorar':
+                      <option value="necesita mejorar" selected>1-Necesita mejorar</option>
+                  $elif datos.calificacion == 'bueno':
+                      <option value="bueno" selected>2-Bueno</option>
+                  $elif datos.calificacion == 'muy bueno':
+                      <option value="muy bueno" selected>3-Muy Bueno</option>
+                  $elif datos.calificacion == 'excelente':
+                      <option value="excelente" selected>4-Excelente</option>
+                </select>
+              </section>
             <br>
             <br>
-            <button type="submit" class="btn btn-success btn-lg btn-block">Calificar</button>
+            <section class="form-group">
+                <h3 class="text-left"><img src="/static/images/asesoria_extra.png" height="40" width="40">  ¿Se requerirá de otra asesoria?</h3>
+                <section class="radio">
+                    $if datos.extra == 'si':
+                        <label><input type="radio" name="extra" value='si' disabled checked>Si</label>
+                    $else:
+                        <label><input type="radio" name="extra" value='si' disabled>Si</label>
+                    </section>
+                <section class="radio">
+                    $if datos.extra == 'no':
+                        <label><input type="radio" name="extra" value='no' disabled checked>No</label>
+                    $else:
+                        <label><input type="radio" name="extra" value='no' disabled>No</label>
+                </section>
+          </section>
         </div>
-</form>
-        <a href="/index_asesoria"><button class="btn btn-danger btn-lg btn-block" style="width: 1070px; margin-left: 20px;">Cancelar</button></a>
+        <a href="/index_asesoria"><button type="submit" class="btn btn-secondary btn-lg btn-block"><img src="/static/images/back.png" height="40" width="40">Regresar</button></a>
         <br>
         <div class="card-footer text-muted">
             ADVIHAWK

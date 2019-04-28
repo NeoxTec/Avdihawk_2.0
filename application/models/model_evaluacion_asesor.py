@@ -21,6 +21,13 @@ def asesor_evaluado(asesoria):
         print "Model asesor_evaluado Message {}".format(e.message)
         return None
 
+def get_reporte_alumno(num_as):
+    try:
+        return db.select('evaluacion_asesor', where='asesoria = $num_as', vars=locals())[0]
+    except Exception as e:
+        print "Model get_reporte_asesor Error {}".format(e.args)
+        print "Model get_reporte_asesor Message {}".format(e.message)
+        return None
 
 def get_evaluacion_asesor(id_e):
     try:

@@ -1,65 +1,88 @@
+$def with(asesoria,datos)
 <br>
     <img src="/static/images/okay.png" height="80" width="80" style="margin-left:510px;">  
     <h1 class="text-center">Reporte de asesoría</h1><br>
     <p style="font-size:20px;">Porfavor realiza el siguiente reporte de seguimiento </p>
 <br>
 <section class="container">
-    <h3 class="text-left"><img src="/static/images/asesor.png" height="50" width="50"> Asesor:</h3><input type="text" class="form-control" readonly="true" value="" id="id_as" name="asesor"> 
+    <h3 class="text-left"><img src="/static/images/asesor.png" height="50" width="50"> Asesor:</h3><input type="text" class="form-control" readonly="true" value="$asesoria.asesor" id="id_as" name="asesor"> 
     <br>
-    <h3 class="text-left"><img src="/static/images/fecha.png" height="50" width="50"> Fecha:</h3><input type="text" class="form-control" readonly="true" value="" id="correo" name="fecha">
+    <h3 class="text-left"><img src="/static/images/fecha.png" height="50" width="50"> Fecha:</h3><input type="text" class="form-control" readonly="true" value="$asesoria.dia" id="fecha" name="fecha">
     <br>
-    <h3 class="text-left"><img src="/static/images/horas.png" height="50" width="50">  Horas:</h3><input type="text" class="form-control" readonly="true" value="" id="horario" name="horas">
+    <h3 class="text-left"><img src="/static/images/horas.png" height="50" width="50">  Horas:</h3><input type="text" class="form-control" readonly="true" value="$datos.horas" id="horas" name="horas">
     <br>
     <br>
-    <h3 class="text-left"><img src="/static/images/tema y lugar.png" height="50" width="50"> Tema Tratado y lugar:</h3><input type="text" class="form-control"  readonly="true"  id="grado" name="tema">
+    <h3 class="text-left"><img src="/static/images/tema y lugar.png" height="50" width="50"> Tema Tratado y lugar:</h3><input type="text" class="form-control"  readonly="true" value="$asesoria.tema" id="tema" name="tema">
     <br>
     <section class="form-group">
         <label class="font-weight-bold"><img src="/static/images/asisitio o no.png" height="30" width="30"> ¿Asistió el Asesor a tiempo?</label>
         <section class="radio">
-                <label><input type="radio" name="asistencia" value='si'>Si</label>
+            $if datos.asistencia == 'si':
+                <label><input type="radio" name="asistencia" value='si' checked disabled>Si</label>
+            $else:
+                <label><input type="radio" name="asistencia" value='si' disabled>Si</label>
             </section>
         <section class="radio">
-            <label><input type="radio" name="asistencia" value='no' checked>No</label>
+            $if datos.asistencia == 'no':
+                <label><input type="radio" name="asistencia" value='no' checked disabled>No</label>
+            $else:
+                <label><input type="radio" name="asistencia" value='no' disabled>No</label>
         </section>
   </section>
   <section class="form-group">
     <label class="font-weight-bold"><img src="/static/images/comprendio el tema.png" height="30" width="30"> ¿Quedó Comprendido el tema?</label>
     <section class="radio">
-            <label><input type="radio" name="comprension" value='si'>Si</label>
+            $if datos.comprension == 'si':
+                <label><input type="radio" name="comprension" value='si' checked disabled>Si</label>
+            $else:
+                <label><input type="radio" name="comprension" value='si' disabled>Si</label>
         </section>
     <section class="radio">
-        <label><input type="radio" name="comprension" value='no' checked>No</label>
+            $if datos.comprension == 'si':
+                <label><input type="radio" name="comprension" value='no' checked disabled>No</label>
+            $else:
+                <label><input type="radio" name="comprension" value='no' disabled>No</label>
     </section>
 </section>
 <br>
-<h3 class="text-left"><img src="/static/images/si es no porque.png" height="50" width="50">En caso de ser No ¿Porqué?:</h3><input type="text" class="form-control"  readonly="False"  id="grado" name="razon">
+<h3 class="text-left"><img src="/static/images/si es no porque.png" height="50" width="50">En caso de ser No ¿Porqué?:</h3><input type="text" class="form-control"  readonly="true" value="$datos.razon"  id="grado" name="razon">
   <br>
     <section class="form-group">
         <label for="Tema"><img src="/static/images/observation.png" height="20" width="20">Observaciones:</label>
-        <textarea class="form-control" placeholder="Tema" id="tema" name="observaciones" rows="4" required></textarea>
+        <textarea class="form-control" placeholder="Tema" id="tema" name="observaciones" rows="4" required readonly="true">$datos.observaciones</textarea>
     </section>
     <br>
     <section class="form-group">
         <label  class="font-weight-bold" for="grado"><img src="/static/images/evaluation.png" height="30" width="30"> Calificacion General:</label>
-        <select class="form-control" id="calificacion" name="calificacion">
-            <option selected class="font-weight-bold">Selecciona la calificación: </option>
-            <option value="insuficiente">1-Insuficiente</option>
-            <option value="regular">2-Regular</option>
-            <option value="bueno">3-Bueno</option>
-            <option value="muy bueno">4-Muy Bueno</option>
-            <option value="excelente">5-Excelente</option>
+        <select class="form-control" id="calificacion" name="calificacion" disabled>
+            <option class="font-weight-bold" >Selecciona la calificación: </option>
+            $if datos.calificacion == 'insuficiente':
+                <option value="insuficiente"selected >1-Insuficiente</option>
+            $elif datos.calificacion == 'regular':
+                <option value="regular" selected >2-Regular</option>
+            $elif datos.calificacion == 'bueno':
+                <option value="bueno" selected >3-Bueno</option>
+            $elif datos.calificacion == 'muy bueno':
+                <option value="muy bueno" selected >4-Muy Bueno</option>
+            $elif datos.calificacion == 'excelente':
+                <option value="excelente" selected >5-Excelente</option>
           </select>
         </section>
     <br>
     <section class="form-group">
         <label class="font-weight-bold"><img src="/static/images/te gustaria tomar otra asesoria.png" height="30" width="30">¿Te gustaria Volver a tomar asesoria con el asesor?</label>
         <section class="radio">
-                <label><input type="radio" name="gusto" value='si'>Si</label>
+                $if datos.gusto == 'si':
+                    <label><input type="radio" name="gusto" value='si' disabled checked>Si</label>
+                $else:
+                    <label><input type="radio" name="gusto" value='si' disabled>Si</label>
             </section>
         <section class="radio">
-            <label><input type="radio" name="gusto" value='no' checked>No</label>
+            $if datos.gusto == 'no':
+                <label><input type="radio" name="gusto" value='no' checked disabled>No</label>
+            $else:
+                <label><input type="radio" name="gusto" value='no'disabled>No</label>
         </section>
   </section>
-    <a href="/insert_asesoria"><button type="button" class="btn btn-success btn-lg btn-block"><img src="/static/images/plus.png" height="20" width="20">  Enviar Evaluación</button></a><br>
-    <a href="/index_asesor"><button type="submit" class="btn btn-secondary btn-lg btn-block"><img src="/static/images/back.png" height="40" width="40">Regresar</button></a>
+    <a href="/index_asesoria"><button type="submit" class="btn btn-secondary btn-lg btn-block"><img src="/static/images/back.png" height="40" width="40">Regresar</button></a>
 </section>

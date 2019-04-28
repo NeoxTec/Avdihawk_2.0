@@ -1,11 +1,10 @@
-# -*- coding:utf-8 -*-
-import web 
 import config as config
+import web
 import app
-"""
-    Clase de Index la cual permite mandar los registros de los clientes al frontend
-"""
-class Reporte:
+
+
+class Resultado():
+
     def __init__(self):
         pass
 
@@ -13,4 +12,4 @@ class Reporte:
         app.session.num_as = num_as
         asesoria = config.model_asesoria.get_asesorias(num_as)
         reporte = config.model_evaluacion_alumno.get_reporte_asesor(num_as)
-        return config.render.reporte_asesor(asesoria,reporte) # render evaluacion_asesor.html
+        return config.render.valorar(asesoria,reporte) # Envia todos los registros y renderiza index.html

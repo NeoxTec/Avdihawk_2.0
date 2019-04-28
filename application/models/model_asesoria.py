@@ -20,6 +20,7 @@ def get_asesorias(num_as):
         print "Model get Error {}".format(e.args)
         print "Model get Message {}".format(e.message)
         return None
+
 '''
 Metodo para seleccionar un registro que coincida con el asesor de asesoria 
 '''
@@ -98,6 +99,20 @@ def update_asesoria(num_as,estado): # actualiza el registro
     try:
             return db.update('asesorias',
             estado=estado,
+            where='num_as=$num_as',
+            vars=locals())
+    except Exception as e:
+        print "Model update_asesoria Error ()",format(e.args)
+        print "Model update_asesoria Message {}",format(e.message)
+        return None
+
+'''
+Metodo para insertar el motivo de rechazo en caso de ser rechazada la asesoría
+'''
+def motivo(num_as,observaciones): # actualiza el registro
+    try:
+            return db.update('asesorias',
+            observaciones=observaciones,
             where='num_as=$num_as',
             vars=locals())
     except Exception as e:
