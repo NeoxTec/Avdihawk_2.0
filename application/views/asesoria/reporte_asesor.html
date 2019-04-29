@@ -13,7 +13,7 @@ $def with (asesoria,datos)
     <h3 class="text-left"><img src="/static/images/tema y lugar.png" height="40" width="40"> Tema Tratado y lugar:</h3><input type="text" class="form-control"  readonly="true" value="$asesoria.tema" id="grado" name="tema">
     <br>
     <section class="form-group">
-        <h3 class="text-left"><img src="/static/images/asisitio o no.png" height="40" width="40"> ¿Asistió el Asesorado?</h3>
+        <h3 class="text-left"><img src="/static/images/asisitio o no.png" height="40" width="40"> ¿Asistió el asesorado?</h3>
         <section class="radio">
                 $if datos.asistencia == 'si':
                     <label><input type="radio" name="asistencia" value='si' disabled checked>Si</label>
@@ -34,7 +34,7 @@ $def with (asesoria,datos)
     </section>
     <br>
     <section class="form-group">
-        <h3 class="text-left"><img src="/static/images/evaluation.png" height="40" width="40"> Calificacion General:</h3>
+        <h3 class="text-left"><img src="/static/images/evaluation.png" height="40" width="40"> Calificación General:</h3>
         <select class="form-control" id="calificacion" name="calificacion" disabled>
             <option selected class="font-weight-bold" disabled>Selecciona la calificación: </option>
             $if datos.calificacion == 'necesita mejorar':
@@ -49,7 +49,7 @@ $def with (asesoria,datos)
         </section>
     <br>
     <section class="form-group">
-        <h3 class="text-left"><img src="/static/images/asesoria_extra.png" height="40" width="40">  ¿Se requerirá de otra asesoria?</h3>
+        <h3 class="text-left"><img src="/static/images/asesoria_extra.png" height="40" width="40">  ¿Se requerirá de otra asesoría?</h3>
         <section class="radio">
             $if datos.extra == 'si':
                 <label><input type="radio" name="extra" value='si' disabled checked>Si</label>

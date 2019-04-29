@@ -10,7 +10,7 @@ class Insert():
         pass
 
     def GET(self):
-        message = "Porfavor registrate para poder hacer uso de la plataforma" 
+        message = "Por favor regístrate para poder hacer uso de la plataforma" 
         return config.render.registro(message) # render insert.html
 
     def POST(self):
