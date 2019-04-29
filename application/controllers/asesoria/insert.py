@@ -8,7 +8,7 @@ from datetime import date
 from datetime import timedelta
 from datetime import time
 from datetime import datetime
-hoy = date.today()
+
 
 """
     Clase para insertar registros a la base de datos por medio de un formulario en la webapp
@@ -23,6 +23,7 @@ class Insert:
         return config.render.insert_asesoria(message) # renderiza la pagina insert.html
     
     def POST(self):
+        hoy = str(date.today())
         session_user = app.session.user
         id_as = app.session.id_as
         formulario = web.input() # almacena los datos del formulario
@@ -39,10 +40,11 @@ class Insert:
         print hoy
         print dia
         if app.remote == True:
-            mas = ahora - timedelta(hours=5)
-            hora_actual = time(mas.hour,mas.minute)
-        print "dia",ahora.day
-        if dia < str(hoy):
+            menos = ahora - timedelta(hours=5)
+            hora_actual = time(menos.hour,menos.minute)
+            if str(menos) > dia:
+                hoy = dia
+        if dia < hoy:
             app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
             raise web.seeother('/insert_asesoria')
         elif str(hora) < str(hora_actual):
