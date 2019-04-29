@@ -41,6 +41,7 @@ class Insert:
         if app.remote == True:
             mas = ahora - timedelta(hours=5)
             hora_actual = time(mas.hour,mas.minute)
+        print "dia",ahora.day
         if dia < str(hoy):
             app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
             raise web.seeother('/insert_asesoria')

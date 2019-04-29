@@ -14,7 +14,7 @@ $def with(datos,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,ca
                     <th scope="col"><img src="/static/images/user-silhouette.png" width="15" height="15">  Solicitante</th>
                     <th scope="col"><img src="/static/images/content.png" width="15" height="15">  Tema y lugar</th>
                     <th scope="col" colspan="2"><img src="/static/images/resume.png" width="15" height="15">Situación</th>
-                    $if aceptado == True or rechazado == True or calificado == True:
+                    $if aceptado == True or rechazado == True or calificado == True or finalizado == True:
                         <th scope="col" colspan="2"><img src="/static/images/rating.png" width="15" height="15">Seguimiento</th>
                 </tr>
             </thead>

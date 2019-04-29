@@ -55,9 +55,9 @@ class Index:
                     evaluacion = config.model_evaluacion_alumno.alumno_evaluado(asesoria)
                     evaluacion1 = config.model_evaluacion_asesor.asesor_evaluado(asesoria)
                     if evaluacion == 0 and evaluacion1 == 1:
-                        pendiente = True
+                        calf_pendiente = True
                     else:
-                        pendiente = False
+                        calf_pendiente = False
                 elif row.estado == 'calificado':
                     calificado = True
             asesorias = config.model_asesoria.get_solicitante(session_user)
