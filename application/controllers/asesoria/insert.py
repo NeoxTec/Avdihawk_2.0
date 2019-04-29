@@ -38,15 +38,12 @@ class Insert:
         print asesor.correo
         print hora
         print hoy
-        print dia
+        print "dia",dia
         if app.remote == True:
             menos = ahora - timedelta(hours=5)
             hora_actual = time(menos.hour,menos.minute)
-            if str(menos) > dia:
-                hoy = dia
-            elif str(menos) == dia:
-                hoy = str(menos)
-        if dia < hoy:
+            fecha =  date(menos.year,menos.month,menos.day)
+        if dia < fecha:
             app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
             raise web.seeother('/insert_asesoria')
         elif str(hora) < str(hora_actual):
