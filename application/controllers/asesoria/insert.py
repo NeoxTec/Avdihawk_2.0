@@ -44,6 +44,8 @@ class Insert:
             hora_actual = time(menos.hour,menos.minute)
             if str(menos) > dia:
                 hoy = dia
+            elif str(menos) == dia:
+                hoy = str(menos)
         if dia < hoy:
             app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
             raise web.seeother('/insert_asesoria')
