@@ -5,6 +5,9 @@ import app
 import time
 import datetime
 from datetime import date
+from datetime import timedelta
+from datetime import time
+from datetime import datetime
 hoy = date.today()
 
 """
@@ -27,16 +30,21 @@ class Insert:
         hora = formulario['hora'] # almacena el nombre escrito en el input
         tema = formulario ['tema'] # almacena el telefono escrito en el input
         asesor = config.model_asesor.select_correo(id_as)
+        ahora =  datetime.now()
+        hora_actual = time(ahora.hour,ahora.minute)
+        #hora_actual = time.strftime("%H:%M") 
         print id_as
         print asesor.correo
         print hora
         print hoy
         print dia
-        print time.strftime("%H:%M")
+        if app.remote == True:
+            mas = ahora - timedelta(hours=5)
+            hora_actual = time(mas.hour,mas.minute)
         if dia < str(hoy):
             app.session.message = "El dia es incorrecto, no puedes ingresar día anterior al actual"
             raise web.seeother('/insert_asesoria')
-        elif str(hora) < time.strftime("%H:%M"):
+        elif str(hora) < str(hora_actual):
             app.session.message = "La hora es incorrecta, no puedes ingresar un horario anterior al actual"
             raise web.seeother('/insert_asesoria')
         else:
