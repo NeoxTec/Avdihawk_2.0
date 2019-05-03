@@ -1,10 +1,10 @@
-$def with (asesoria,datos)
+$def with (asesoria,datos,nombre)
 <br>
     <img src="/static/images/okay.png" height="80" width="80" style="margin-left:510px;">  
     <h1 class="text-center">Reporte de asesoría</h1><br>
 <br>
 <section class="container">
-    <h3 class="text-left"><img src="/static/images/asesorado.png" height="40" width="40"> Asesorado:</h3><input type="text" class="form-control" readonly="true" value="$asesoria.solicitante" id="asesorado" name="asesorado"> 
+    <h3 class="text-left"><img src="/static/images/asesorado.png" height="40" width="40"> Asesorado:</h3><input type="text" class="form-control" readonly="true" value="$nombre" id="asesorado" name="asesorado"> 
     <br>
     <h3 class="text-left"><img src="/static/images/fecha.png" height="40" width="40"> Fecha:</h3><input type="text" class="form-control" readonly="true" value="$asesoria.dia" id="fecha" name="fecha">
     <br>

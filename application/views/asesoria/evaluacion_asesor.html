@@ -1,4 +1,4 @@
-$def with(asesoria)
+$def with(asesoria,nombre)
 <br>
 <a href="/index_asesoria"><button type="submit" class="btn btn-secondary btn-lg" style="margin-left:920px;"><img src="/static/images/back.png" height="40" width="40">Regresar</button></a>
     <img src="/static/images/okay.png" height="80" width="80" style="margin-left:510px;">  
@@ -7,7 +7,7 @@ $def with(asesoria)
 <br>
 <form method="POST">
 <section class="container">
-    <h3 class="text-left"><img src="/static/images/asesorado.png" height="40" width="40"> Asesorado:</h3><input type="text" class="form-control" readonly="true" value="$asesoria.solicitante" id="id_as" name="asesorado"> 
+    <h3 class="text-left"><img src="/static/images/asesorado.png" height="40" width="40"> Asesorado:</h3><input type="text" class="form-control" readonly="true" value="$nombre" id="id_as" name="asesorado"> 
     <br>
     <h3 class="text-left"><img src="/static/images/fecha.png" height="40" width="40"> Fecha:</h3><input type="text" class="form-control" readonly="true" value="$asesoria.dia" id="fecha" name="fecha">
     <br>

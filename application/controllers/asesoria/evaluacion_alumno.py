@@ -11,7 +11,8 @@ class Evaluar():
     def GET(self,num_as):
         app.session.num_as = num_as
         asesoria = config.model_asesoria.get_asesorias(num_as)
-        return config.render.evaluacion_alumno(asesoria) # render evaluacion.html
+        nombre = config.model_users.get_nombre(asesoria.asesor)
+        return config.render.evaluacion_alumno(asesoria,nombre.nombre) # render evaluacion.html
 
     def POST(self,num_as):
         formulario = web.input() # get form data

@@ -13,4 +13,5 @@ class Reporte:
         app.session.num_as = num_as
         asesoria = config.model_asesoria.get_asesorias(num_as)
         reporte = config.model_evaluacion_alumno.get_reporte_asesor(num_as)
-        return config.render.reporte_asesor(asesoria,reporte) # render evaluacion_asesor.html
+        nombre = config.model_users.get_nombre(asesoria.solicitante)
+        return config.render.reporte_asesor(asesoria,reporte,nombre.nombre) # render evaluacion_asesor.html
