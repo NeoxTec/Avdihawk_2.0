@@ -22,7 +22,7 @@ remote=True
     Base de datos remota (uso de db_cloud)
     Login de Google direccionado a una url en la nube ('http://REMOTE_SERVER/auth/%s/callback')
 '''
-remote = False
+remote = True
 
 if remote is True: # Config remote database and remote oauth host
     db = database.db_cloud
