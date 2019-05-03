@@ -1,4 +1,4 @@
-$def with(message)
+$def with(user,message)
 $var tipo = '-1'
 $if message != None:
     <br>
@@ -14,7 +14,7 @@ $if message != None:
 <form method="POST">
         <section class="form-group">
                 <label for="correo" class="font-weight-bold"><img src="/static/images/university.png" height="30" width="30">  Correo:</label>
-                <input type="text" class="form-control"  placeholder="Correo" id="correo" name="user" required>
+                <input type="text" class="form-control"  placeholder="Correo" id="correo" value="$user" name="user" required readonly="true">
         </section>
         <br>
         <section class="form-group">

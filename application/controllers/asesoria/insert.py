@@ -33,6 +33,7 @@ class Insert:
         asesor = config.model_asesor.select_correo(id_as)
         ahora =  datetime.now()
         hora_actual = time(ahora.hour,ahora.minute)
+        fecha = date(ahora.year,ahora.month,ahora.day)
         #hora_actual = time.strftime("%H:%M") 
         print id_as
         print asesor.correo

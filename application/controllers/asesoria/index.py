@@ -43,9 +43,10 @@ class Index:
                         calf_pendiente = False
                 elif row.estado == 'calificado':
                     calificado = True
+                nombre = config.model_users.get_nombre(row.solicitante)
             asesorias = config.model_asesoria.get_asesor(session_user)
             print "pendiente",pendiente
-            return config.render.index_asesoria(asesorias,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,calificado) # Envia todos los registros y renderiza index.html
+            return config.render.index_asesoria(asesorias,nombre.nombre,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,calificado) # Envia todos los registros y renderiza index.html
         elif params['tipo'] == 1:
             asesorias = config.model_asesoria.get_solicitante(session_user)
             for row in asesorias:
@@ -60,8 +61,9 @@ class Index:
                         calf_pendiente = False
                 elif row.estado == 'calificado':
                     calificado = True
+                nombre = config.model_users.get_nombre(row.asesor)
             asesorias = config.model_asesoria.get_solicitante(session_user)
-            return config.render.index_asesoria(asesorias,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,calificado) # Envia todos los registros y renderiza index.html
+            return config.render.index_asesoria(asesorias,nombre.nombre,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,calificado) # Envia todos los registros y renderiza index.html
 
     def POST(self):
         session_user = app.session.user

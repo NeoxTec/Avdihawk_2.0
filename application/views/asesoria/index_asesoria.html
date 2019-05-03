@@ -1,4 +1,4 @@
-$def with(datos,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,calificado)
+$def with(datos,nombre,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,calificado)
 <br>
 <h1 class="text-center"><img src="/static/images/consultant.png" height="50" width="50" margin-left="20px">  Asesorías</h1>
 <br>
@@ -43,7 +43,7 @@ $def with(datos,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,ca
                     <td>$row.dia</a></td>
                     <td>$row.hora</a></td>
                     <td>$row.estado</a></td>
-                    <td>$row.solicitante</a></td>
+                    <td>$nombre</a></td>
                     <td>$row.tema</a></td>
                     $if row.estado == 'pendiente':
                         <td  width="30" height="30" data-toggle="tooltip" data-placement="top" title="Aceptar"><button type="submit" name="estado" value="aceptado" style="border:0; border-radius: 100%; width: 32px; height: 32px; padding:0px;"><a href="/index_asesoria"><img src="/static/images/success.png" width="34" height="32"></a></button></td>
@@ -73,7 +73,7 @@ $def with(datos,params,aceptado,rechazado,calf_pendiente,pendiente,finalizado,ca
                     <td>$row.dia</a></td>
                     <td>$row.hora</a></td>
                     <td>$row.estado</a></td>
-                    <td>$row.asesor</a></td>
+                    <td>$nombre</a></td>
                     <td>$row.tema</a></td>
                     $if row.estado == 'rechazado':
                         <td  width="30" height="30" data-toggle="tooltip" data-placement="top" title="Rechazado" class="text-center"><img src="/static/images/negative.png" width="36" height="34"></td>

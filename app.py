@@ -22,7 +22,7 @@ remote=True
     Base de datos remota (uso de db_cloud)
     Login de Google direccionado a una url en la nube ('http://REMOTE_SERVER/auth/%s/callback')
 '''
-remote = True
+remote = False
 
 if remote is True: # Config remote database and remote oauth host
     db = database.db_cloud
@@ -69,7 +69,7 @@ if web.config.get('_session') is None:
         initializer={
         'login': 0,
         'tipo': -1,
-        'user': 'anonymous',
+        'user': 'anonymus',
         'picture': None,
         'expire': '0000-00-00 00:00:00',
         'loggedin': False,

@@ -93,14 +93,13 @@ class Login:
 
                 raise config.web.seeother('/')
 
-            if user_authenticated is None:  
+            if user_authenticated is None:
                 app.session.loggedin = False # cierra la sesion en nuestro sistema
                 app.session.user = user # usuario no registrado en nuestro sistema
-                print user
+                print "usuario:", app.session.user
                 app.session.tipo = -1  # asignar privilegio solo para pagina de introduccion
                 app.session.picture = None  # se quita la url con la fotografia
-                app.session.kill()  # destruir la session de kuorra
-                web.setcookie('_id', '', 0)  # cierre de session en google
+                #app.session.kill()  # destruir la session 
                 raise web.seeother('/registro')
                 #raise web.seeother('/registro')
         else:  # si no inicio session correctamente con google vuelve a solicitar que la inicie
