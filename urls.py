@@ -1,3 +1,4 @@
+# url = "/nombre_url, application.controllers.carpeta_controlador.controlador.clase"
 urls = (
     '/', 'application.controllers.main.index.Index',
     '/404', 'application.controllers.main.notfound.NotFound',

@@ -5,7 +5,7 @@ Configurar los parametros para una base de datos localhost
 '''
 # Base de datos local
 db_host = 'localhost'
-db_name = 'advihawk_google'
+db_name = 'advihawk2'
 db_user = 'advihawk'
 db_pw = 'advihawk.2019'
 db_port = 3306

@@ -1,8 +1,11 @@
 import web
 import app 
 
+#region Variables declaradas por Neoxtec
 db = app.db
+#endregion
 
+#region Metodos declarados por Neoxtec
 
 def get_all_evaluacion_alumno():
     try:
@@ -81,3 +84,5 @@ extra=extra,
         print "Model update Error {}".format(e.args)
         print "Model updateMessage {}".format(e.message)
         return None
+
+#endregion

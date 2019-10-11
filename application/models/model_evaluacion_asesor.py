@@ -1,7 +1,9 @@
 import web
 import app 
 
+#region Variables declaradas por Neoxtec
 db = app.db
+#endregion
 
 def get_all_evaluacion_asesor():
     try:
